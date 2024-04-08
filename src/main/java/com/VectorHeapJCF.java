@@ -3,14 +3,22 @@ package com;
 import java.util.PriorityQueue;
 import java.util.Vector;
 
-public class VectorHeapJCF<E extends Comparable<E>> extends PriorityQueue<E> {
-    
+/*
+ * Clase VectorHeap
+ * Esta clase extiende la coleccion de PriorityQueue de Java Collections Framework
+ * Utiliza un Vector para almacenar los elementos
+ * Ordena los elementos en un heap dependiendo su prioridad
+ * Devuelve valores String de los elementos (toString)
+ */
 
-    protected Vector<E> data;
+public class VectorHeapJCF<E extends Comparable<E>> extends PriorityQueue<E> {
+
+    protected Vector<E> data; // the data, kept in heap order
 
     public VectorHeapJCF(Vector<E> v){
+        // post: constructs a new priority queue from an unordered vector
         int i;
-        data = new Vector<E>(v.size()); // we know ultimate size
+        data = new Vector<E>(v.size()); 
         for (i = 0; i < v.size(); i++)
         { // add elements to heap
             add(v.get(i));
@@ -19,15 +27,15 @@ public class VectorHeapJCF<E extends Comparable<E>> extends PriorityQueue<E> {
         
     }
 
-    protected static int parent(int i) {
+    protected static int parent(int i) { // post: returns parent of node at index i
         return (i - 1) / 2;
     }
 
-    protected static int left(int i) {
+    protected static int left(int i) {// post: returns left child of node at index i
         return 2 * i + 1;
     }
 
-    protected static int right(int i) {
+    protected static int right(int i) {// post: returns right child of node at index i
         return (i + 1) * 2;
     }
 
@@ -78,7 +86,13 @@ public class VectorHeapJCF<E extends Comparable<E>> extends PriorityQueue<E> {
         }
     }
 
-    
+    public E getIndex(int i) { // post: returns the element at index i
+        return data.get(i);
+    }
+
+    public int size() { // post: returns number of elements within queue
+        return data.size();
+    }
 
     public void addData(E value)
     // pre: value is non-null comparable
@@ -86,7 +100,6 @@ public class VectorHeapJCF<E extends Comparable<E>> extends PriorityQueue<E> {
     {
         data.add(value);
         percolateUp(data.size() - 1);
-
     }
 
 }

@@ -3,39 +3,39 @@ package com;
 
 import java.util.Vector;
 
+/*
+ * Clase VectorHeap
+ * Esta clase implementa la interfaz PriorityQueue
+ * Utiliza un Vector para almacenar los elementos
+ * Ordena los elementos en un heap dependiendo su prioridad
+ * Devuelve valores String de los elementos (toString)
+ */
+
 
 public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
 
-    protected Vector<E> data;
+    protected Vector<E> data; // the data, kept in heap order
 
-    
-
-    public VectorHeap()
-	// post: constructs a new priority queue
-	{
-		data = new Vector<E>();
-	}
-
-	public VectorHeap(Vector<E> v)
+    public VectorHeap(Vector<E> v)
 	// post: constructs a new priority queue from an unordered vector
 	{
 		int i;
-		data = new Vector<E>(v.size()); // we know ultimate size
+		data = new Vector<E>(v.size());
 		for (i = 0; i < v.size(); i++)
 		{ // add elements to heap
 			add(v.get(i));
 		}
 	}
 
-    protected static int parent(int i) {
+    protected static int parent(int i) { // post: returns parent of node at index i
         return (i - 1) / 2;
     }
 
-    protected static int left(int i) {
+    protected static int left(int i) {// post: returns left child of node at index i
         return 2 * i + 1;
     }
 
-    protected static int right(int i) {
+    protected static int right(int i) {// post: returns right child of node at index i
         return (i + 1) * 2;
     }
 
@@ -109,27 +109,33 @@ public class VectorHeap<E extends Comparable<E>> implements PriorityQueue<E> {
 	}
 
     public E getFirst() {
+        // post: returns the first value in the heap
         return data.get(0);
     }
 
     public E getIndex(int i) {
+        // post: returns the value at index i
         return data.get(i);
     }
 
     public int size() {
+        // post: returns the size of the heap
         return data.size();
     }
 
 
     public String toString() {
+        // post: returns the string representation of the heap object
         return data.toString();
     }
 
     public void clear() {
+        // post: removes all elements from the heap
         data.clear();
     }
 
     public boolean isEmpty() {
+        // post: returns true if the heap is empty
         return data.isEmpty();
     }
 

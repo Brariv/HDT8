@@ -30,7 +30,7 @@ public class Paciente implements Comparable<Paciente> {
 
     @Override
         public int compareTo(Paciente p) {
-            return p.getPrioridad().compareTo(this.prioridad); 
+            return prioridad.compareTo(p.prioridad); 
         }
 
 }

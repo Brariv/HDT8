@@ -1,6 +1,6 @@
 package com;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -31,38 +31,36 @@ public class Menu {
 
             for (int i = 0; i < data.size(); i++) {
                 //create object paciente
+                
                 Paciente paciente = new Paciente(data.get(i).get(0), data.get(i).get(1), data.get(i).get(2));
                 pacientes.add(paciente);
             }
 
-            //System.out.println(pacientes.get(3).compareTo(pacientes.get(3)));
-            //System.out.println(pacientes.get(3).compareTo(pacientes.get(2)));
-            //System.out.println(pacientes.get(3).compareTo(pacientes.get(1)));
-            //System.out.println(pacientes.get(3).compareTo(pacientes.get(0)));
+            
 
             switch (option) {
                 case 1:
                     VectorHeap<Paciente> vector = factory.createVectorHeap();
                     for (int i = 0; i < pacientes.size(); i++) {
-                        if (vector.size() == 0) {
-                            vector.add(pacientes.get(i));
-                        } else {
-                            if (pacientes.get(i).compareTo(vector.getFirst()) == 1) {
-                                vector.add(pacientes.get(i));
-                            } else {
-                                vector.add(pacientes.get(i));
-                            }
-                        }
+                        vector.add(pacientes.get(i));
                     }
-                    System.out.println("VectorHeap: ");
-                    //System.out.println(vector.size());
+                    System.out.println("Pacientes: ");
                     for(int i = 0; i < vector.size(); i++) {
                         System.out.println(vector.getIndex(i).toString());
                     }
                     break;
+
                 case 2:
-                    
+                    VectorHeapJCF<Paciente> vectorJCF = factory.createVectorHeapJCF();
+                    for (int i = 0; i < pacientes.size(); i++) {
+                        vectorJCF.addData(pacientes.get(i));
+                    }
+                    System.out.println("Pacientes: ");
+                    for(int i = 0; i < vectorJCF.size(); i++) {
+                        System.out.println(vectorJCF.getIndex(i).toString());
+                    }
                     break;
+
                 case 3:
                     System.out.println("Saliendo...");
                     break;
