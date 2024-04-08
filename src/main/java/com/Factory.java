@@ -1,7 +1,7 @@
 package com;
 
 import java.util.Vector;
-import java.util.PriorityQueue;
+
 
 public class Factory {
     
@@ -9,8 +9,8 @@ public class Factory {
         return new VectorHeap<Paciente>(new Vector<Paciente>());
     }
 
-    public PriorityQueue<Paciente> createPriorityQueue() {
-        return new PriorityQueue<Paciente>();
+    public VectorHeapJCF<Paciente> createVectorHeapJCF() {
+        return new VectorHeapJCF<Paciente>(new Vector<Paciente>());
     }
 
     
