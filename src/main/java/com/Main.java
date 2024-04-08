@@ -12,5 +12,8 @@ public class Main {
         String path = scanner.nextLine();
         ArrayList<ArrayList<String>> data = txtReader.readTxTFile(path);
         System.out.println(data);
+
+
+        scanner.close();
     }
 }
